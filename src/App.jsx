@@ -1,5 +1,5 @@
 import React from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import Header from "./components/Header";
 import Home from "./pages/Home";
@@ -8,29 +8,16 @@ import Cart from "./pages/Cart";
 
 import "./scss/app.scss";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "cart",
-    element: <Cart />,
-  },
-  {
-    path: "*",
-    element: <NotFound />,
-  },
-]);
-
 function App() {
   return (
     <div className="wrapper">
       <Header />
       <div className="content">
-        <div className="container">
-          <RouterProvider router={router} />
-        </div>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/cart' element={<Cart />} />
+          <Route path='*' element={<NotFound />} />
+        </Routes>
       </div>
     </div>
   );
