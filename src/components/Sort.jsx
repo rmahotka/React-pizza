@@ -1,6 +1,6 @@
 import React from "react";
 
-function Sort() {
+function Sort({ value, onClickSortType }) {
   const [open, setOpen] = React.useState(false);
   const [selected, setSelected] = React.useState(0);
 
@@ -33,11 +33,11 @@ function Sort() {
       {open && (
         <div className="sort__popup">
           <ul>
-            {list.map((value, index) => (
+            {list.map((value, i) => (
               <li
-                key={index}
-                onClick={() => onListSelected(index)}
-                className={selected === index ? "active" : ""}
+                key={i}
+                onClick={() => onClickSortType(i)}
+                className={value === i ? "active" : ""}
               >
                 {value}
               </li>
